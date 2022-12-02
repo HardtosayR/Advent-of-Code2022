@@ -1,20 +1,25 @@
-f = open('input.txt')
+file = open('input.txt')
 data = {}
-sum = 0
+sumOfElf = 0
 index = 0
-for line in f:
+for line in file:
     if line != "\n":
-        sum += int(line)
+        sumOfElf += int(line)
     else:
-        data[index] = sum
-        sum = 0
+        data[index] = sumOfElf
+        sumOfElf = 0
         index += 1
-f.close()
-maxvalue = 0
-ans = 0
-for i in data.keys():
-    if data[i] >= maxvalue:
-        maxvalue = data[i]
-        ans = i+1
+file.close()
+ans = sorted(data.items(), key=lambda x: x[1], reverse=True)
 
-print(f"The {ans}th Elf carries the most Calories: {data[ans]}")
+def part1(): 
+    print(f"The #{ans[0][0]+1}th Elf carried the most Caleries: {ans[0][1]}")
+
+def part2():
+    sumOfCalories = 0
+    for i in range(0,3):
+        sumOfCalories += ans[i][1]
+    print(f"The top 3 Elfs carried Calorries in total: {sumOfCalories}")
+
+part1()
+part2()
