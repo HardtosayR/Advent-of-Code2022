@@ -22,6 +22,7 @@ def isOverlap(line:str)->bool:
     for i in range(len(temp)):
         for j in range(len(temp[i])):
             temp[i][j] = int(temp[i][j])
+            
     if temp[0][0] > temp[1][1]:
         return False
     elif temp[0][1] < temp[1][0]:
